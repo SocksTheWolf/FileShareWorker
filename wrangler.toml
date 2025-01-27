@@ -1,0 +1,29 @@
+name = "nameless-king-storage"
+main = "worker.js"
+compatibility_date = "2025-01-27"
+send_metrics = false
+workers_dev = false
+preview_urls = false
+
+assets = { directory = "./static/", binding = "ASSETS", html_handling = "drop-trailing-slash", not_found_handling = "404-page", experimental_serve_directly = false }
+
+routes = [
+  { pattern = "socksthewolf.com/storage/*", zone_name = "socksthewolf.com" },
+]
+
+[vars]
+FILES_PATH = "/storage/"
+SHARE_ENABLED = "true"
+CAPTCHA_SITE_KEY = "0x4AAAAAAA6by3DBm-al8Y7S"
+REQUIRE_CAPTCHA = "true"
+
+[[r2_buckets]]
+binding = "FILE_STORE"
+bucket_name = "socks-storage"
+
+[observability]
+enabled = true
+head_sampling_rate = 0.25
+
+[limits]
+cpu_ms = 10
