@@ -7,6 +7,8 @@ Press this fancy button:
 
 [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/socksthewolf/FileShareWorker)
 
+You will need to update your routes and turnstile keys later.
+
 Or:
 
 1. Create an R2 Bucket
