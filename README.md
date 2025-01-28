@@ -3,6 +3,11 @@
 A simple filesharing endpoint that uses Cloudflare's R2, Workers and Turnstile to serve up large files.
 
 ## Setup
+Press this fancy button:
+
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/socksthewolf/FileShareWorker)
+
+Or:
 
 1. Create an R2 Bucket
 2. Create a turnstile widget. Set your site private key as a secret called `CAPTCHA_PRIV_KEY` via Wrangler
