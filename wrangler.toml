@@ -23,7 +23,7 @@ bucket_name = "socks-storage"
 
 [observability]
 enabled = true
-head_sampling_rate = 0.25
+head_sampling_rate = 1
 
 [limits]
 cpu_ms = 10

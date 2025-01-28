@@ -13,7 +13,16 @@ A simple filesharing endpoint that uses Cloudflare's R2, Workers and Turnstile t
 
 ### Uploading
 
-You can upload your files directly via wrangler or via the web dashboard on the management portal for your bucket
+You can upload your files directly via wrangler or via the web dashboard on the management portal for your bucket. This has a limit of 300MB upload.
+To upload bigger files, you can download and install [rclone](https://rclone.org/install/). Follow [the instructions on this page](https://developers.cloudflare.com/r2/examples/rclone/) to set up your rclone for CloudFlare.
+
+For ease of use and to lower your potential chance of blowing out your limits early, make sure to also add the following lines in your config:
+
+```
+no_check_bucket=true
+max_upload_parts=100
+chunk_size=100Mi
+```
 
 ### Downloading
 
