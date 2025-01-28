@@ -18,7 +18,7 @@ To upload bigger files, you can download and install [rclone](https://rclone.org
 
 For ease of use and to lower your potential chance of blowing out your limits early, make sure to also add the following lines in your config:
 
-```
+```text
 no_check_bucket=true
 max_upload_parts=100
 chunk_size=100Mi
