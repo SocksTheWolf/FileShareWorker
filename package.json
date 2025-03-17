@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "license": "ISC",
   "dependencies": {
-    "wrangler": "^3.105.1"
+    "wrangler": "^4.0.0"
   }
 }
