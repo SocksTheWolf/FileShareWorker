@@ -38,9 +38,3 @@ REQUIRE_CAPTCHA = "true"
 [observability]
 enabled = true
 head_sampling_rate = 1
-
-# This worker should not need more than 10ms to function
-# but we put a hard limit here to make sure we don't go
-# over free plan limits
-[limits]
-cpu_ms = 10
