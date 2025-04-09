@@ -36,5 +36,5 @@ REQUIRE_CAPTCHA = "true"
 
 # Logging is on and 100%, but could be disabled
 [observability]
-enabled = true
+enabled = false
 head_sampling_rate = 1
