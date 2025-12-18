@@ -10,9 +10,9 @@ workers_dev = false
 # Serve up any static assets
 assets = { directory = "./static/", binding = "ASSETS", html_handling = "drop-trailing-slash", run_worker_first = ["/", "!/pico.min.css"] }
 
-# Turn this off if you don't want to use a domain
+# Remove this if you don't want to use a domain
 routes = [
-  { pattern = "socksthewolf.com/storage/*", zone_name = "socksthewolf.com" },
+  { pattern = "storage.socksthewolf.com", custom_domain = true },
 ]
 
 # The r2 bucket to fetch files from, make sure to change the bucket name
@@ -21,8 +21,6 @@ binding = "FILE_STORE"
 bucket_name = "socks-storage"
 
 [vars]
-# path from the origin hostname that should trigger file sharing
-FILES_PATH = "/storage/"
 # if false, no files will be shared
 SHARE_ENABLED = "true"
 # Turnstile Captcha public key

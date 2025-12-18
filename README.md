@@ -3,6 +3,7 @@
 A simple filesharing endpoint that uses Cloudflare's R2, Workers and Turnstile to serve up large files.
 
 ## Setup
+
 Press this fancy button:
 
 [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/socksthewolf/FileShareWorker)
@@ -33,4 +34,4 @@ chunk_size=100Mi
 
 ### Downloading
 
-Your files will be accessible via your website + FILES_PATH + file name. Anything that doesn't exist will serve up a failure page.
+Your files will be accessible via your website subdomain + file name. Anything that doesn't exist will serve up a failure page.

@@ -42,7 +42,8 @@ async function serveFileFromPath(env, origin, path) {
   if (path == null)
     return await returnNotFound(env, origin);
 
-  const file = await env.FILE_STORE.get(path);
+  const finalPath = path.replace(/\//g, "").trim();
+  const file = await env.FILE_STORE.get(finalPath);
   if (!file)
     return await returnNotFound(env, origin);
 
@@ -50,7 +51,7 @@ async function serveFileFromPath(env, origin, path) {
   return new Response(file.body, {
     headers: { 
       "Content-Type": file.httpMetadata.contentType,
-      "Content-Disposition": `attachment; filename=${path}`
+      "Content-Disposition": `attachment; filename=${finalPath}`
     },
   });
 }
@@ -76,13 +77,12 @@ export default {
     
     // Allow for if captcha is disabled.
     if (env.REQUIRE_CAPTCHA === "false") {
-      const path = pathname.replace(env.FILES_PATH, "").trim();
-      return await serveFileFromPath(env, origin, path);
+      return await serveFileFromPath(env, origin, pathname);
     }
 
     if (method === "GET") {
       // Always ask the user for HTML Captcha before continuing.
-      const path = pathname.replace(env.FILES_PATH, "").trim();
+      const path = pathname.trim();
       // If the user specified no files, then just give them a not found.
       // TODO: perhaps make an index in the future.
       if (path === "") {
@@ -91,7 +91,7 @@ export default {
       const mainHTML = await getLocalFile(env, origin, "/captcha.html");
       return new HTMLRewriter().on('#fileLoc', new HTMLFileValue(path))
         .on(".cf-turnstile", new HTMLCaptchaSiteKey(env.CAPTCHA_SITE_KEY))
-        .on("form", new HTMLFormLocation(env.FILES_PATH))
+        .on("form", new HTMLFormLocation(path))
         .transform(mainHTML);
         
       } else if (method === "POST") {
