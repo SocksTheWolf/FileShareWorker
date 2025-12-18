@@ -7,10 +7,8 @@ preview_urls = false
 # set to true if you dont want to use a domain
 workers_dev = false
 
-# Serve up any static assets, turn off serving directly
-# though serving directly could technically be turned on,
-# we do some htmlrewrites to the data itself
-assets = { directory = "./static/", binding = "ASSETS", html_handling = "drop-trailing-slash", not_found_handling = "404-page", run_worker_first = true }
+# Serve up any static assets
+assets = { directory = "./static/", binding = "ASSETS", html_handling = "drop-trailing-slash", run_worker_first = ["/", "!/pico.min.css"] }
 
 # Turn this off if you don't want to use a domain
 routes = [

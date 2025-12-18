@@ -59,12 +59,7 @@ async function serveFileFromPath(env, origin, path) {
 export default {
   async fetch(request, env, ctx) {
     const {pathname, origin} = new URL(request.url);
-
-    // Early out for the stylesheet
-    if (pathname === "/pico.min.css") {
-      return await getLocalFile(env, origin, pathname);
-    }
-    
+   
     // If sharing is not enabled, then serve 404s
     if (env.SHARE_ENABLED !== "true") {
       return await returnNotFound(env, origin);
