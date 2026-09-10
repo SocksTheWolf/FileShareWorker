@@ -20,6 +20,14 @@ routes = [
 binding = "FILE_STORE"
 bucket_name = "socks-storage"
 
+# Logging is on and 100%, but could be disabled
+[observability]
+enabled = false
+head_sampling_rate = 1
+
+[secrets]
+required=["CAPTCHA_PRIV_KEY"]
+
 [vars]
 # if false, no files will be shared
 SHARE_ENABLED = "true"
@@ -29,8 +37,3 @@ CAPTCHA_SITE_KEY = "0x4AAAAAAA6by3DBm-al8Y7S"
 # If you are on cloudflare free, it's recommended you
 # set this to true to keep within limits
 REQUIRE_CAPTCHA = "true"
-
-# Logging is on and 100%, but could be disabled
-[observability]
-enabled = false
-head_sampling_rate = 1
